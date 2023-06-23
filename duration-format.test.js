@@ -3,12 +3,16 @@ const formatDuration = require('./duration-format');
 describe("formatDuration function", () => {
   it("returns an error message when called with a negative integer", () => {
     expect(formatDuration(-10)).toEqual('Argument must be a non-negative integer.');
+    expect(formatDuration(-10000)).toEqual('Argument must be a non-negative integer.');
+    expect(formatDuration(-0.1)).toEqual('Argument must be a non-negative integer.');
 
   })
-  it("returns 'now' given an arg of 0", () =>{
+  it("returns 'now' given an arg of 0", () => {
     expect(formatDuration(0)).toEqual('now');
   });
-  it("returns the number of seconds when input is < 60", () =>{
-
+  it("returns the number of seconds when input is < 60", () => {
+    expect(formatDuration(10)).toEqual('10 seconds');
+    expect(formatDuration(59)).toEqual('59 seconds');
+    expect(formatDuration(60)).not.toEqual('60 seconds');
   })
 })
