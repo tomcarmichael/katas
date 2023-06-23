@@ -7,9 +7,11 @@ function formatDuration(seconds) {
     return `${seconds} second`;
   } else if (seconds < 60) {
     return `${seconds} seconds`;
-  } else {
-    return '1 minute and 30 seconds';
-  }
+  } else if (seconds === 60) {
+    return `1 minute`;
+  } else if (seconds > 60) {
+    return `1 minute and ${seconds - 60} seconds`;
+  } 
 }
 
 module.exports = formatDuration;
