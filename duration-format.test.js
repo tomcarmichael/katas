@@ -14,5 +14,8 @@ describe("formatDuration function", () => {
     expect(formatDuration(10)).toEqual('10 seconds');
     expect(formatDuration(59)).toEqual('59 seconds');
     expect(formatDuration(60)).not.toEqual('60 seconds');
+  });
+  it("returns '1 second' given arg of 1", () => {
+    expect(formatDuration(1)).toEqual('1 second');
   })
 })
