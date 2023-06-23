@@ -1,0 +1,15 @@
+{
+  "name": "duration-format",
+  "version": "1.0.0",
+  "description": "Your task in order to complete this Kata is to write a function which formats a duration,  given as a number of seconds, in a human-friendly way.",
+  "main": "duration-format.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.5.0"
+  }
+}
