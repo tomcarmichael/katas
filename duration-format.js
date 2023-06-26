@@ -14,7 +14,7 @@ function formatDuration(seconds) {
   const years = Math.floor(seconds / secondsPerYear);
   const days = Math.floor(seconds / secondsPerDay);
   const hours = Math.floor(seconds / secondsPerHour);
-  const minutes = Math.floor(seconds / 60);
+  const minutes = (Math.floor(seconds / 60) % 60);
   const remainderSeconds = seconds % 60;
   
   let formattedDuration = "";
@@ -25,8 +25,12 @@ function formatDuration(seconds) {
   if (days === 1) { formattedDuration += `${days} day`}
   else if (days > 1) { formattedDuration += `${days} days`} 
 
-  if (hours === 1) { formattedDuration += `${hours} hour`}
-  else if (hours > 1) { formattedDuration += `${hours} hours`}   
+  if (hours) {
+    formattedDuration += `${hours} hour`
+    if (hours > 1) { formattedDuration += 's' }
+    if (minutes && seconds) { formattedDuration += `, ` }
+    if (!minutes && seconds) { formattedDuration += ` and ` }
+  }
 
   if (minutes) { 
     formattedDuration += `${minutes} minute`

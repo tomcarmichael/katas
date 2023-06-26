@@ -36,4 +36,7 @@ describe("formatDuration function", () => {
   it("returns formatted duration of 1 minute", () => {
     expect(formatDuration(60)).toEqual('1 minute');
   })
+  it("returns formatted duration given 3662", () => {
+    expect(formatDuration(3662)).toEqual('1 hour, 1 minute and 2 seconds');
+  })
 })
