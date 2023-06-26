@@ -3,7 +3,9 @@ function formatDuration(seconds) {
     return 'Argument must be a non-negative integer.';
   } else if (seconds === 0) {
     return 'now'; 
-  } 
+  } else if (typeof seconds != 'number') {
+    return 'Argument must be a non-negative integer.';
+  }
 
   const secondsPerYear = 31536000; // 60 * 60 * 24 * 365
   const secondsPerDay = 86400; // 60 * 60 * 24
