@@ -45,7 +45,7 @@ describe("formatDuration function", () => {
   it("returns formatted duration given 62", () => {
     expect(formatDuration(62)).toEqual('1 minute and 2 seconds');
   })
-  it("returns formatted duration given 86400", () => {
+  it("returns formatted duration for 1 day", () => {
     expect(formatDuration(86400)).toEqual('1 day');
   })
   it("returns formatted duration given 90000", () => {
@@ -60,4 +60,30 @@ describe("formatDuration function", () => {
   it("returns formatted duration given 86461", () => {
     expect(formatDuration(86461)).toEqual('1 day, 1 minute and 1 second');
   })
+  it("returns formatted duration given 90001", () => {
+    expect(formatDuration(90001)).toEqual('1 day, 1 hour and 1 second');
+  })
+  it("returns formatted duration given 90061", () => {
+    expect(formatDuration(90061)).toEqual('1 day, 1 hour, 1 minute and 1 second');
+  })
+  it("returns formatted duration for 1 year", () => {
+    expect(formatDuration(31536000)).toEqual('1 year');
+  })
+  it("returns formatted duration for 1 year", () => {
+    expect(formatDuration(31536000)).toEqual('1 year');
+  })
+  it("returns formatted duration for 1 year and 1 day", () => {
+    expect(formatDuration(31622400)).toEqual('1 year and 1 day');
+  })
+  it("returns formatted duration for 31622401", () => {
+    expect(formatDuration(31622401)).toEqual('1 year, 1 day and 1 second');
+  })
+  it("returns formatted duration for 31536060", () => {
+    expect(formatDuration(31536060)).toEqual('1 year and 1 minute');
+  })
+  it("returns formatted duration for 31536061", () => {
+    expect(formatDuration(31536061)).toEqual('1 year, 1 minute and 1 second');
+  })
+
+  
 })

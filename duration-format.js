@@ -19,31 +19,44 @@ function formatDuration(inputSeconds) {
   
   let formattedDuration = "";
 
-  if (years === 1) { formattedDuration += `${years} year`}
-  else if (years > 1) { formattedDuration += `${years} years`} 
+  if (years) {
+    formattedDuration += `${years} year`;
+    if (years > 1) { formattedDuration += 's'}
+    if ((days && (hours || minutes || remainderSeconds)) || 
+        (hours && (minutes || remainderSeconds)) ||
+        (minutes && remainderSeconds)) {
+          formattedDuration += `, `;
+        }
+    if ((days && !hours && !minutes && !remainderSeconds) || 
+        (hours && !days && !minutes && !remainderSeconds) || 
+        (minutes && !days && !hours && !remainderSeconds) ||
+        (remainderSeconds && !days && !hours && !minutes)) { 
+          formattedDuration += ` and `;
+        }
+  } 
 
   if (days) { 
-    formattedDuration += `${days} day`
+    formattedDuration += `${days} day`;
     if (days > 1) { formattedDuration += 's'}
     if (hours && (minutes || remainderSeconds) || (minutes && remainderSeconds)) { formattedDuration += `, ` }
     if ((hours && !minutes && !remainderSeconds) || (minutes && !hours && !remainderSeconds) || (remainderSeconds  && !hours && !minutes))  { formattedDuration += ` and ` }
   }
 
   if (hours) {
-    formattedDuration += `${hours} hour`
+    formattedDuration += `${hours} hour`;
     if (hours > 1) { formattedDuration += 's' }
     if (minutes && remainderSeconds) { formattedDuration += `, ` }
     if (!minutes && remainderSeconds) { formattedDuration += ` and ` }
   }
 
   if (minutes) { 
-    formattedDuration += `${minutes} minute`
+    formattedDuration += `${minutes} minute`;
     if (minutes > 1) { formattedDuration += 's' }
     if (remainderSeconds) { formattedDuration += ` and ` }
   }
 
   if (remainderSeconds) {
-    formattedDuration += `${remainderSeconds} second`
+    formattedDuration += `${remainderSeconds} second`;
     if (remainderSeconds > 1) { formattedDuration += 's' }
   }
 
