@@ -1,0 +1,1 @@
+#### A repo for coding katas that I complete from Codewars or elsewhere
