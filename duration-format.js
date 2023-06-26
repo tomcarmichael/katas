@@ -1,9 +1,9 @@
-function formatDuration(seconds) {
-  if (seconds < 0) {
+function formatDuration(inputSeconds) {
+  if (inputSeconds < 0) {
     return 'Argument must be a non-negative integer.';
-  } else if (seconds === 0) {
+  } else if (inputSeconds === 0) {
     return 'now'; 
-  } else if (typeof seconds != 'number') {
+  } else if (typeof inputSeconds != 'number') {
     return 'Argument must be a non-negative integer.';
   }
 
@@ -11,25 +11,28 @@ function formatDuration(seconds) {
   const secondsPerDay = 86400; // 60 * 60 * 24
   const secondsPerHour = 3600; // 60 * 60
 
-  const years = Math.floor(seconds / secondsPerYear);
-  const days = Math.floor(seconds / secondsPerDay);
-  const hours = Math.floor(seconds / secondsPerHour);
-  const minutes = (Math.floor(seconds / 60) % 60);
-  const remainderSeconds = seconds % 60;
+  const years = Math.floor(inputSeconds / secondsPerYear);
+  const days = (Math.floor(inputSeconds / secondsPerDay) % 365);
+  const hours = (Math.floor(inputSeconds / secondsPerHour) % 24);
+  const minutes = (Math.floor(inputSeconds / 60) % 60);
+  const remainderSeconds = inputSeconds % 60;
   
   let formattedDuration = "";
 
   if (years === 1) { formattedDuration += `${years} year`}
   else if (years > 1) { formattedDuration += `${years} years`} 
 
-  if (days === 1) { formattedDuration += `${days} day`}
-  else if (days > 1) { formattedDuration += `${days} days`} 
+  if (days) { 
+    formattedDuration += `${days} day`
+    if (days > 1) { formattedDuration += 's'}
+    if (hours && (minutes || remainderSeconds)) { formattedDuration += `, ` }
+  }
 
   if (hours) {
     formattedDuration += `${hours} hour`
     if (hours > 1) { formattedDuration += 's' }
-    if (minutes && seconds) { formattedDuration += `, ` }
-    if (!minutes && seconds) { formattedDuration += ` and ` }
+    if (minutes && remainderSeconds) { formattedDuration += `, ` }
+    if (!minutes && remainderSeconds) { formattedDuration += ` and ` }
   }
 
   if (minutes) { 
