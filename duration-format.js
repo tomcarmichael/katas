@@ -1,10 +1,8 @@
 function formatDuration(inputSeconds) {
-  if (inputSeconds < 0) {
+  if (inputSeconds < 0 || typeof inputSeconds != 'number') {
     return 'Argument must be a non-negative integer.';
   } else if (inputSeconds === 0) {
     return 'now'; 
-  } else if (typeof inputSeconds != 'number') {
-    return 'Argument must be a non-negative integer.';
   }
 
   const secondsPerYear = 31536000; // 60 * 60 * 24 * 365
@@ -20,8 +18,7 @@ function formatDuration(inputSeconds) {
   let formattedDuration = "";
 
   if (years) {
-    formattedDuration += `${years} year`;
-    if (years > 1) { formattedDuration += 's'}
+    formattedDuration += `${years} year${years > 1 ? 's' : ''}`;
     if ((days && (hours || minutes || remainderSeconds)) || 
         (hours && (minutes || remainderSeconds)) ||
         (minutes && remainderSeconds)) {
@@ -36,8 +33,7 @@ function formatDuration(inputSeconds) {
   } 
 
   if (days) { 
-    formattedDuration += `${days} day`;
-    if (days > 1) { formattedDuration += 's'}
+    formattedDuration += `${days} day${days > 1 ? 's' : ''}`;
     if ((hours && (minutes || remainderSeconds)) || (minutes && remainderSeconds)) {
           formattedDuration += `, `;
         }
@@ -48,25 +44,21 @@ function formatDuration(inputSeconds) {
   }
 
   if (hours) {
-    formattedDuration += `${hours} hour`;
-    if (hours > 1) { formattedDuration += 's' }
+    formattedDuration += `${hours} hour${hours > 1 ? 's' : ''}`;
     if (minutes && remainderSeconds) { formattedDuration += `, ` }
     if (!minutes && remainderSeconds) { formattedDuration += ` and ` }
   }
 
   if (minutes) { 
-    formattedDuration += `${minutes} minute`;
-    if (minutes > 1) { formattedDuration += 's' }
+    formattedDuration += `${minutes} minute${minutes > 1 ? 's' : ''}`;
     if (remainderSeconds) { formattedDuration += ` and ` }
   }
 
   if (remainderSeconds) {
-    formattedDuration += `${remainderSeconds} second`;
-    if (remainderSeconds > 1) { formattedDuration += 's' }
+    formattedDuration += `${remainderSeconds} second${remainderSeconds > 1 ? 's' : ''}`;
   }
 
   return formattedDuration;
-
 }
 
 module.exports = formatDuration;
