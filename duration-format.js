@@ -25,7 +25,8 @@ function formatDuration(inputSeconds) {
   if (days) { 
     formattedDuration += `${days} day`
     if (days > 1) { formattedDuration += 's'}
-    if (hours && (minutes || remainderSeconds)) { formattedDuration += `, ` }
+    if (hours && (minutes || remainderSeconds) || (minutes && remainderSeconds)) { formattedDuration += `, ` }
+    if ((hours && !minutes && !remainderSeconds) || (minutes && !hours && !remainderSeconds) || (remainderSeconds  && !hours && !minutes))  { formattedDuration += ` and ` }
   }
 
   if (hours) {
