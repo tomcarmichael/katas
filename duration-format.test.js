@@ -5,7 +5,16 @@ describe("formatDuration function", () => {
     expect(formatDuration(-10)).toEqual('Argument must be a non-negative integer.');
     expect(formatDuration(-10000)).toEqual('Argument must be a non-negative integer.');
     expect(formatDuration(-0.1)).toEqual('Argument must be a non-negative integer.');
-
+  })
+  xit(("returns an error message when called w a string"), () => {
+    expect(formatDuration('10')).toEqual('Argument must be a non-negative integer.');
+    expect(formatDuration('0')).toEqual('Argument must be a non-negative integer.');
+  })
+  xit(("returns an error message when called w a bool"), () => {
+    expect(formatDuration(True)).toEqual('Argument must be a non-negative integer.');
+  })
+  xit(("returns an error message when called w an array"), () => {
+    expect(formatDuration([1])).toEqual('Argument must be a non-negative integer.');
   })
   it("returns 'now' given an arg of 0", () => {
     expect(formatDuration(0)).toEqual('now');
