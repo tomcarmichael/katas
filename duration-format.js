@@ -46,7 +46,7 @@ function formatDuration(inputSeconds) {
   if (hours) {
     formattedDuration += `${hours} hour${hours > 1 ? 's' : ''}`;
     if (minutes && remainderSeconds) { formattedDuration += `, ` }
-    if (!minutes && remainderSeconds) { formattedDuration += ` and ` }
+    if ((minutes && !remainderSeconds) || (remainderSeconds && !minutes)) { formattedDuration += ` and ` }
   }
 
   if (minutes) { 

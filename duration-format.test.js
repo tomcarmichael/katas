@@ -84,6 +84,13 @@ describe("formatDuration function", () => {
   it("returns formatted duration for 31536061", () => {
     expect(formatDuration(31536061)).toEqual('1 year, 1 minute and 1 second');
   })
+  it("returns formatted duration for 132030240", () => {
+    expect(formatDuration(132030240)).toEqual('4 years, 68 days, 3 hours and 4 minutes');
+  })
+  it("returns formatted duration for 4229940", () => {
+    expect(formatDuration(4229940)).toEqual('48 days, 22 hours and 59 minutes');
+  })
 
+  
   
 })
