@@ -3,10 +3,8 @@ def traffic_count(traffic_count_array):
 
     traffic_per_hour = []
 
-    traffic_per_hour.append(traffic_count_array[0:6])
-    traffic_per_hour.append(traffic_count_array[6:12])
-    traffic_per_hour.append(traffic_count_array[12:18])
-    traffic_per_hour.append(traffic_count_array[18:24])
+    for i in range(0, len(traffic_count_array), 6):
+        traffic_per_hour.append(traffic_count_array[i:i+6])
 
     for i in range(4):
         hourly_tuple = (f'{i+4}:00pm', max(traffic_per_hour[i]))
